@@ -1,19 +1,60 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Fragment, useEffect, useState } from "react";
 
-export default function App() {
+import BottomNavigation from "./components/navigation/bottom/BottomNavigation";
+import HeaderAppbar from "./components/navigation/top/HeaderAppbar";
+import CovidData from "./data/covid.json";
+
+const App = () => {
+  const [isLoading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    setData(CovidData as any);
+    setLoading(false);
+  }, []);
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
+    <Fragment>
+      <HeaderAppbar />
+      {/* <View style={{ flex: 10, padding: 24 }}>
+          {isLoading ? (
+            <Text>Is loading...</Text>
+          ) : (
+            <View
+              style={{
+                flex: 1,
+                flexDirection: "column",
+                justifyContent: "space-between",
+              }}
+            >
+              <Text
+                style={{
+                  fontSize: 14,
+                  color: "black",
+                  textAlign: "center",
+                  paddingBottom: 10,
+                }}
+              >
+                Covid statistics:
+              </Text>
+              <FlatList
+                data={data.response}
+                keyExtractor={({ id }, index) => id}
+                renderItem={({ item }) => (
+                  <Text>
+                    {"Country : " +
+                      item.country +
+                      ". Population: " +
+                      new Number(item.population).toLocaleString()}
+                  </Text>
+                )}
+              />
+            </View>
+          )}
+        </View> */}
+      <BottomNavigation />
+    </Fragment>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;

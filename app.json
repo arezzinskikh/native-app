@@ -2,11 +2,15 @@
   "name": "native-app",
   "displayName": "native-app",
   "expo": {
-    "name": "native-app",
-    "slug": "native-app",
+    "name": "native-app-v2",
+    "slug": "native-app-v2",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "description": "",
+    "android": {
+      "package": "com.arezzinskikh.nativeappv2"
+    }
   }
 }
